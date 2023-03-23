@@ -1,15 +1,16 @@
-var formulario = document.querySelector("#form")
+var formulario = document.querySelector(".formulario") /* se cambia el valor que tenía por el nombre de la clase */
 
 formulario.onsubmit = function(e) {
 
-  e.prevent();
+  /* evita que se vuelva a cargar la pagina despues de enviar el formulario */
+  e.preventDefault();
   
   var n = formulario.elements[0]
-  var e = formulario.elements[1]
+  var edad2 = formulario.elements[1]
   var na = formulario.elements[2]
 
   var nombre = n.value
-  var edad = e.value
+  var edad = edad2.value
 
   var i = na.selectedIndex
   var nacionalidad = na.options[i].value
@@ -20,7 +21,7 @@ formulario.onsubmit = function(e) {
     n.classList.add("error")
   }
   if (edad < 18 || edad > 120) {
-    e.classList.add("error")
+    edad2.classList.add("error")
   }
 
 if (nombre.length > 0 
@@ -29,13 +30,13 @@ if (nombre.length > 0
   agregarInvitado(nombre, edad, nacionalidad)
   }
 }
-
-var botonBorrar = document.createElement("button")
+/* Hace que haya un boton doble */
+/* var botonBorrar = document.createElement("button")
 botonBorrar.textContent = "Eliminar invitado"
 botonBorrar.id = "boton-borrar"
 var corteLinea = document.createElement("br")
 document.body.appendChild(corteLinea)
-document.body.appendChild(botonBorrar);
+document.body.appendChild(botonBorrar); */
 
 function agregarInvitado(nombre, edad, nacionalidad) {
 
@@ -55,17 +56,17 @@ function agregarInvitado(nombre, edad, nacionalidad) {
 var lista = document.getElementById("lista-de-invitados")
 
 var elementoLista = document.createElement("div")
-elementoLista.classList.added("elemento-lista")
+elementoLista.classList.add("elemento-lista") /* el metodo es .add en vez de adder */
 lista.appendChild(elementoLista)
 
-var spanNombre = document.createElement("span")
+/* var spanNombre = document.createElement("span")
 var inputNombre = document.createElement("input")
 var espacio = document.createElement("br")
 spanNombre.textContent = "Nombre: "
 inputNombre.value = nombre 
 elementoLista.appendChild(spanNombre)
 elementoLista.appendChild(inputNombre)
-elementoLista.appendChild(espacio)
+elementoLista.appendChild(espacio) */
 
 function crearElemento(descripcion, valor) {
 var spanNombre = document.createElement("span")
